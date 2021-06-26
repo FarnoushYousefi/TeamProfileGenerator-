@@ -40,7 +40,20 @@ inquirer
     },
   ])
   .then((answer) => {
-    fs.writeFileSync(gernerateHtmlFilePath, '');
+    let manager = new Manager(
+      answer.managerName,
+      answer.managerId,
+      answer.managerEmail,
+      answer.managerOfficeNumber
+    );
+    teamMember.push(manager);
+    if (answer.additionalTeamMember == 'Engineer') {
+      addEngineer();
+    } else if (answer.additionalTeamMember == 'Intern') {
+      addIntern();
+    } else {
+      generateHTML();
+    }
   })
   .catch((error) => {});
 // call this as many times as members Intern need to bed added
@@ -143,4 +156,6 @@ function addEngineer() {
     .catch((error) => {});
 }
 
-function generateHTML() {}
+function generateHTML() {
+  fs.writeFileSync(gernerateHtmlFilePath, '');
+}
