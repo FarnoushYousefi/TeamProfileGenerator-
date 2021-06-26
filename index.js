@@ -1,7 +1,7 @@
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-//
+var inquirer = require('inquirer');
 // require file system to generate the HTMl
 const fs = require('fs');
 //generate the HTML file path
@@ -47,13 +47,7 @@ inquirer
       answer.managerOfficeNumber
     );
     teamMember.push(manager);
-    if (answer.additionalTeamMember == 'Engineer') {
-      addEngineer();
-    } else if (answer.additionalTeamMember == 'Intern') {
-      addIntern();
-    } else {
-      generateHTML();
-    }
+    evaluteAdditionalTeamMemberResult(answer.additionalTeamMember);
   })
   .catch((error) => {});
 // call this as many times as members Intern need to bed added
@@ -94,14 +88,7 @@ function addIntern() {
         answer.InternEmail,
         answer.internSchool
       );
-      teamMember.push(intern);
-      if (answer.additionalTeamMember == 'Engineer') {
-        addEngineer();
-      } else if (answer.additionalTeamMember == 'Intern') {
-        addIntern();
-      } else {
-        generateHTML();
-      }
+      evaluteAdditionalTeamMemberResult(answer.additionalTeamMember);
     })
     .catch((error) => {});
 }
@@ -111,24 +98,24 @@ function addEngineer() {
   inquirer
     .prompt([
       {
-        name: 'InternName',
+        name: 'enginerName',
         type: 'input',
-        message: "Enter team Intern's name",
+        message: "Enter engineer 's name",
       },
       {
-        name: 'InternId',
+        name: 'enginerId',
         type: 'input',
-        message: "Enter team Intern's ID",
+        message: "Enter team enginer's ID",
       },
       {
-        name: 'InternEmail',
+        name: 'enginerEmail',
         type: 'input',
-        message: "Enter Intern's Email",
+        message: "Enter enginer's Email",
       },
       {
-        name: 'internSchool',
+        name: 'enginerSchool',
         type: 'input',
-        message: "Enter Intern's school",
+        message: "Enter engineer's school",
       },
       {
         name: 'additionalTeamMember',
@@ -138,24 +125,26 @@ function addEngineer() {
       },
     ])
     .then((answer) => {
-      let intern = new Intern(
-        answer.InternName,
-        answer.InternId,
-        answer.InternEmail,
-        answer.internSchool
+      let intern = new Engineer(
+        answer.enginerName,
+        answer.enginerId,
+        answer.enginerEmail,
+        answer.enginerSchool
       );
       teamMember.push(intern);
-      if (answer.additionalTeamMember == 'Engineer') {
-        addEngineer();
-      } else if (answer.additionalTeamMember == 'Intern') {
-        addIntern();
-      } else {
-        generateHTML();
-      }
+      evaluteAdditionalTeamMemberResult(answer.additionalTeamMember);
     })
     .catch((error) => {});
 }
-
+function evaluteAdditionalTeamMemberResult(result) {
+  if (answer.additionalTeamMember == 'Engineer') {
+    addEngineer();
+  } else if (answer.additionalTeamMember == 'Intern') {
+    addIntern();
+  } else {
+    generateHTML();
+  }
+}
 function generateHTML() {
   fs.writeFileSync(gernerateHtmlFilePath, '');
 }

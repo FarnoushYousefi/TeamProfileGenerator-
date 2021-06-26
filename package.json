@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/FarnoushYousefi/TeamProfileGenerator-/issues"
   },
-  "homepage": "https://github.com/FarnoushYousefi/TeamProfileGenerator-#readme"
+  "homepage": "https://github.com/FarnoushYousefi/TeamProfileGenerator-#readme",
+  "dependencies": {
+    "inquirer": "^8.1.1"
+  }
 }
