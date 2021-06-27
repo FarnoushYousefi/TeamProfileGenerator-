@@ -162,7 +162,20 @@ function initialHTML() {
         </div>
         <div class="cardBody">`;
 }
-function generateTeamMember() {}
+function generateTeamMember(teamMember) {
+  return ` <div class="teamMemberCard">
+    <div class="teamMmberTitle">
+      <h3>${teamMember.getName()} - ${teamMember.getRole()}</h3>
+    </div>
+    <div class="teamMemberBody">
+      <ul>
+        <li>ID:1</li>
+        <li>Name: Lane</li>
+        <li>Email: email</li>
+      </ul>
+    </div>
+  </div>`;
+}
 function generateFinalhtml() {
   return ` </div>
   </body>
