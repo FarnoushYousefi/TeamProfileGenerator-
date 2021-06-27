@@ -146,33 +146,60 @@ function evaluteAdditionalTeamMemberResult(result) {
     generateHTML();
   }
 }
+function initialHTML() {
+  return `<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./teamProfile.css" />
+        <title>Team profile</title>
+      </head>
+      <body>
+        <div class="teamNavBar">
+          <h2 class="navBarTitle">My Team</h2>
+        </div>
+        <div class="cardBody">`;
+}
+function generateTeamMember() {}
+function generateFinalhtml() {
+  return ` </div>
+  </body>
+</html>`;
+}
 function generateHTML() {
   console.log(teamMember);
-  let HTML = ` <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-    crossorigin="anonymous"
-  />
-  <title>teamprofile</title>
-</head>
-`;
-  teamMember.forEach(
-    (member) =>
-      (HTML += ` <div class="card w-75">
-  <div class="card-body">
-    <h5 class="card-title">${member.name}</h5>
-    <p class="card-text">
-      With supporting text below as a natural lead-in to additional content.
-    </p>
-    <a href="#" class="btn btn-primary">Button</a>
-  </div>
-</div>`)
-  );
-  console.log(HTML);
-  fs.writeFileSync(gernerateHtmlFilePath, HTML);
+  //   let HTML = ` <head>
+  //   <meta charset="UTF-8" />
+  //   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  //   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  //   <link
+  //     href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+  //     rel="stylesheet"
+  //     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+  //     crossorigin="anonymous"
+  //   />
+  //   <title>teamprofile</title>
+  // </head>
+  // `;
+  //   teamMember.forEach(
+  //     (member) =>
+  //       (HTML += ` <div class="card w-75">
+  //   <div class="card-body">
+  //     <h5 class="card-title">${member.name}</h5>
+  //     <p class="card-text">
+  //       With supporting text below as a natural lead-in to additional content.
+  //     </p>
+  //     <a href="#" class="btn btn-primary">Button</a>
+  //   </div>
+  // </div>`)
+  //   );
+  //   console.log(HTML);
+  fs.writeFileSync(gernerateHtmlFilePath, '');
+  let htmlData = generateHTML();
+  //loop through teammembers
+  teamMember.forEach((memeber) => (htmlData += generateHTML));
+  htmlData += generateFinalhtml();
+  fs.writeFileSync(generateFinalhtml, htmlData);
 }
