@@ -213,9 +213,9 @@ function generateHTML() {
   //   );
   //   console.log(HTML);
   fs.writeFileSync(gernerateHtmlFilePath, '');
-  let htmlData = generateHTML();
+  let htmlData = initialHTML();
   //loop through teammembers
-  teamMember.forEach((memeber) => (htmlData += generateHTML));
+  teamMember.forEach((memeber) => (htmlData += generateTeamMember(memeber)));
   htmlData += generateFinalhtml();
   fs.writeFileSync(generateFinalhtml, htmlData);
 }
