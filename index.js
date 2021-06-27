@@ -88,6 +88,7 @@ function addIntern() {
         answer.InternEmail,
         answer.internSchool
       );
+      teamMember.push(intern);
       evaluteAdditionalTeamMemberResult(answer.additionalTeamMember);
     })
     .catch((error) => {});
@@ -125,13 +126,13 @@ function addEngineer() {
       },
     ])
     .then((answer) => {
-      let intern = new Engineer(
+      let engineer = new Engineer(
         answer.enginerName,
         answer.enginerId,
         answer.enginerEmail,
         answer.enginerSchool
       );
-      teamMember.push(intern);
+      teamMember.push(engineer);
       evaluteAdditionalTeamMemberResult(answer.additionalTeamMember);
     })
     .catch((error) => {});
@@ -179,13 +180,14 @@ function generateTeamMember(teamMember) {
     </div>
   </div>`;
 }
+//${teamMember.getRoleHtml()}//
 function generateFinalhtml() {
   return ` </div>
   </body>
 </html>`;
 }
 function generateHTML() {
-  console.log(teamMember);
+  //   console.log(teamMember);
   //   let HTML = ` <head>
   //   <meta charset="UTF-8" />
   //   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -212,10 +214,12 @@ function generateHTML() {
   // </div>`)
   //   );
   //   console.log(HTML);
-  fs.writeFileSync(gernerateHtmlFilePath, '');
+  //fs.writeFileSync(gernerateHtmlFilePath, '');
   let htmlData = initialHTML();
-  //loop through teammembers
-  teamMember.forEach((memeber) => (htmlData += generateTeamMember(memeber)));
+  teamMember.forEach((member) => {
+    htmlData += generateTeamMember(member);
+  });
   htmlData += generateFinalhtml();
-  fs.writeFileSync(generateFinalhtml, htmlData);
+  console.log(htmlData);
+  fs.writeFileSync(gernerateHtmlFilePath, htmlData);
 }
