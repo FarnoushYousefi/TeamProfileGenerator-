@@ -169,9 +169,12 @@ function generateTeamMember(teamMember) {
     </div>
     <div class="teamMemberBody">
       <ul>
-        <li>ID:1</li>
-        <li>Name: Lane</li>
-        <li>Email: email</li>
+        <li>ID:${teamMember.getId()}</li>
+        <li>Name: ${teamMember.getName()}</li>
+        <li>
+              Email: <a href="mailto:${teamMember.getEmail()}">${teamMember.getEmail()}</a>
+            </li>
+            ${teamMember.getRoleHtml()}
       </ul>
     </div>
   </div>`;
