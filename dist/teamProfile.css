@@ -1,0 +1,40 @@
+.teamNavBar{
+    background-color: #a07178;
+    text-align:center;
+    color:white;
+    height:100px;
+    display: 100%;
+    padding: 0;
+    margin: 0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.navBarTitle{
+
+}
+.cardBody{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+body{
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ padding: 0;
+ margin:0;
+ top:0;
+}
+.teamMemberCard{
+    width: 400px;
+    height: 250px;
+    background-color: #C6A9AE;
+    padding: 10px;
+    margin:5%;
+    box-shadow: 10px 10px 8px #888888;
+}
+.teamMemberTitle{
+
+}
+.teamMemberBody{
+
+}
